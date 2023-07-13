@@ -31,14 +31,6 @@ public class Payload {
         return src;
     }
 
-    public long getDst() {
-        return dst;
-    }
-
-    public long getSerial() {
-        return serial;
-    }
-
     public byte getDevType() {
         return devType;
     }

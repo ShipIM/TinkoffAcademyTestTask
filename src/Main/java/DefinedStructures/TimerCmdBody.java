@@ -8,10 +8,6 @@ import java.io.IOException;
 public class TimerCmdBody {
     private long timestamp;
 
-    public TimerCmdBody(long timestamp) {
-        this.timestamp = timestamp;
-    }
-
     public TimerCmdBody() {
 
     }

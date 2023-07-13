@@ -10,10 +10,6 @@ import java.util.List;
 public class EnvSensorStatusCmdBody {
     private List<Long> values;
 
-    public EnvSensorStatusCmdBody(List<Long> values) {
-        this.values = values;
-    }
-
     public EnvSensorStatusCmdBody() {
 
     }

@@ -19,10 +19,6 @@ public class Packet {
 
     }
 
-    public byte getLength() {
-        return length;
-    }
-
     public byte[] getPayload() {
         return payload;
     }
@@ -38,7 +34,7 @@ public class Packet {
             if (payload != null)
                 stream.write(payload);
 
-            stream.write(crc8);
+            stream.write((byte) crc8);
 
             return stream.toByteArray();
         }

@@ -29,18 +29,6 @@ public class Trigger {
         return name;
     }
 
-    public boolean isCondition() {
-        return condition;
-    }
-
-    public boolean isCompare() {
-        return compare;
-    }
-
-    public int getType() {
-        return type;
-    }
-
     public long getValue() {
         return value;
     }

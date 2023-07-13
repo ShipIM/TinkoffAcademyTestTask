@@ -15,10 +15,6 @@ public class Switch extends ConditionGadget {
         super(name, address, (byte) 3);
     }
 
-    public List<String> getConnected() {
-        return connected;
-    }
-
     @Override
     public void init(byte[] props) throws IOException {
         this.setCondition(-1);

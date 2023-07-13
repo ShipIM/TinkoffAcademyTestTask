@@ -29,8 +29,6 @@ public abstract class ConditionGadget extends InitializableGadget {
     public List<Change> setStatus(byte[] data) throws IOException {
         condition = data[0];
 
-        System.out.println(condition);
-
         return null;
     }
 }

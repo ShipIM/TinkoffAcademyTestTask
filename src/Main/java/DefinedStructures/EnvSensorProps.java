@@ -10,11 +10,6 @@ public class EnvSensorProps implements Serializable {
     private byte sensors;
     private List<Trigger> triggers;
 
-    public EnvSensorProps(byte sensors, List<Trigger> triggers) {
-        this.sensors = sensors;
-        this.triggers = triggers;
-    }
-
     public EnvSensorProps() {
 
     }

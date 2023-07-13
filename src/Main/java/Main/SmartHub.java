@@ -22,11 +22,10 @@ import java.util.List;
 
 public class SmartHub {
     public static PayloadFormer former;
-    public static long currentTime;
 
     public static void main(String[] args) {
-        String dest = "http://localhost:9998"; // args[0];
-        long address = 819; // Long.decode(args[1]);
+        String dest = args[0];
+        long address = Long.parseLong(args[1], 16);
 
         List<Packet> input = new ArrayList<>();
         former = new PayloadFormer("SmartHub", address, (byte) 1);
@@ -111,7 +110,6 @@ public class SmartHub {
             }
 
             System.exit(0);
-            //TODO Здесь должна быть обработка полученных пакетов.
 
         } catch (IOException | InterruptedException e) {
             System.exit(99);

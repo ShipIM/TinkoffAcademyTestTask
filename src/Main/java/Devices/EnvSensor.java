@@ -20,18 +20,6 @@ public class EnvSensor extends InitializableGadget {
         values = new ArrayList<>((List.of(0L, 0L, 0L, 0L)));
     }
 
-    public byte getSensors() {
-        return sensors;
-    }
-
-    public List<Trigger> getTriggers() {
-        return triggers;
-    }
-
-    public List<Long> getValues() {
-        return values;
-    }
-
     @Override
     public void init(byte[] props) throws IOException {
         EnvSensorProps sensorProps = new EnvSensorProps();
