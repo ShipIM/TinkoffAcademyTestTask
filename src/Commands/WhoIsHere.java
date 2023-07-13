@@ -2,6 +2,7 @@ package Commands;
 
 import DefinedStructures.Device;
 import DefinedStructures.Payload;
+import Devices.Clock;
 import Devices.GadgetFactory;
 import Devices.InitializableGadget;
 import Final.Register;
@@ -25,6 +26,9 @@ public class WhoIsHere implements Command {
 
         gadget.init(device.getDevProps());
         register.add(gadget);
+
+        Clock clock = (Clock) register.getByName("SystemClock");
+        register.addActiveRequest(gadget, clock != null ? clock.getTimestamp() : 0);
 
         return new ArrayList<>(Arrays.asList(SmartHub.former.iAmHere(),
                 SmartHub.former.getStatus(data.getAddress(), gadget.getType())));

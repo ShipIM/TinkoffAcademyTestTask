@@ -23,6 +23,8 @@ public class Tick implements Command {
         } else
             clock.setTimestamp(timerBody.getTimestamp());
 
+        register.expire(clock.getTimestamp());
+
         return null;
     }
 }

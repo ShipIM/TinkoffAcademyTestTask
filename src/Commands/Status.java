@@ -2,6 +2,7 @@ package Commands;
 
 import DefinedStructures.Change;
 import DefinedStructures.Payload;
+import Devices.Clock;
 import Devices.Gadget;
 import Devices.InitializableGadget;
 import Final.Register;
@@ -26,6 +27,11 @@ public class Status implements Command {
 
         for (Change change : changes) {
             Gadget target = register.getByName(change.getName());
+
+            if (target == null) continue;
+
+            Clock clock = (Clock) register.getByName("SystemClock");
+            register.addActiveRequest(target, clock != null ? clock.getTimestamp() : 0);
 
             result.add(SmartHub.former.setStatus(target.getAddress(),
                     target.getType(),

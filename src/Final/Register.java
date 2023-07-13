@@ -39,7 +39,10 @@ public class Register {
     }
 
     public void addActiveRequest(Gadget gadget, long timestamp) {
-        activeRequests.putIfAbsent(gadget, timestamp);
+        Long current = activeRequests.get(gadget);
+
+        if (current == null || current == 0)
+            activeRequests.put(gadget, timestamp);
     }
 
     private void removeActiveRequest(Gadget gadget) {
@@ -47,12 +50,15 @@ public class Register {
     }
 
     public void expire(long currentTime) {
-        for (Map.Entry<Gadget, Long> entry : activeRequests.entrySet())
+        for (Map.Entry<Gadget, Long> entry : activeRequests.entrySet()) {
+            if (entry.getValue() == 0) continue;
+
             if (Math.abs(entry.getValue() - currentTime) > EXPIRATION) {
                 addresses.remove(entry.getKey().getAddress());
                 names.remove(entry.getKey().getName());
 
                 removeActiveRequest(entry.getKey());
             }
+        }
     }
 }

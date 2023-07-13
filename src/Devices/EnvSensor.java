@@ -47,6 +47,10 @@ public class EnvSensor extends InitializableGadget {
         sensorStatus.deserialize(data);
 
         List<Long> current = sensorStatus.getValues();
+
+        if (current == null)
+            return null;
+
         int counter = 0;
         for (int i = 0; i < 4 && counter < current.size(); i++) {
             values.set(i, ((sensors >> i) & 1) == 1 ? current.get(counter++) : 0);
