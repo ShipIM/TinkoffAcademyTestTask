@@ -5,7 +5,6 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 public class Uleb128 {
-    private final static int BITS_LONG = 64;
     private final static int MASK_DATA = 0x7f;
     private final static int MASK_CONTINUE = 0x80;
     private final long value;
@@ -34,10 +33,6 @@ public class Uleb128 {
 
             value += ((long) read & MASK_DATA) << bitSize;
             bitSize += 7;
-            if (bitSize >= BITS_LONG) {
-                throw new ArithmeticException("ULEB128 value exceeds maximum value for long type.");
-            }
-
         } while ((read & MASK_CONTINUE) != 0);
         return value;
     }

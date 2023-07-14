@@ -25,12 +25,13 @@ public class Status implements Command {
         if (changes == null)
             return result;
 
+        Clock clock = (Clock) register.getByName("SystemClock");
+
         for (Change change : changes) {
             Gadget target = register.getByName(change.getName());
 
             if (target == null) continue;
 
-            Clock clock = (Clock) register.getByName("SystemClock");
             register.addActiveRequest(target, clock != null ? clock.getTimestamp() : 0);
 
             result.add(SmartHub.former.setStatus(target.getAddress(),

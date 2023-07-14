@@ -26,7 +26,7 @@ public abstract class ConditionGadget extends InitializableGadget {
     }
 
     @Override
-    public List<Change> setStatus(byte[] data) throws IOException {
+    public List<Change> setStatus(byte[] data) {
         condition = data[0];
 
         return null;

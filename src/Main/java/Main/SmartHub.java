@@ -24,16 +24,16 @@ public class SmartHub {
     public static PayloadFormer former;
 
     public static void main(String[] args) {
-        String dest = args[0];
-        long address = Long.parseLong(args[1], 16);
-
-        List<Packet> input = new ArrayList<>();
-        former = new PayloadFormer("SmartHub", address, (byte) 1);
-        Register register = new Register();
-
-        HttpClient httpClient = HttpClient.newBuilder().version(HttpClient.Version.HTTP_2).build();
-
         try {
+            String dest = args[0];
+            long address = Long.parseLong(args[1], 16);
+
+            List<Packet> input = new ArrayList<>();
+            former = new PayloadFormer("SmartHub", address, (byte) 1);
+            Register register = new Register();
+
+            HttpClient httpClient = HttpClient.newBuilder().version(HttpClient.Version.HTTP_2).build();
+
             byte[] bytes = former.whoIsHere().serialize();
 
             Packet packet = new Packet((byte) bytes.length, bytes, (byte) CRC8.compute(bytes));
